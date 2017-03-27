@@ -1,0 +1,43 @@
+body {
+    background-image: url('../img/background.jpg');
+    background-attachment: fixed;
+    z-index: 0;
+}
+
+html {
+    margin-top: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0px;
+}
+
+.beauty {
+    font-family: 'Pacifico', cursive;
+}
+
+.beauty-green {
+    font-family: 'Pacifico', cursive;
+    color : limegreen;
+}
+
+.map-global {
+    height: 400px;
+    width: 700px;
+}
+
+.map-fiche {
+    height: 300px;
+    width: 100%;
+}
+
+.postmetadata {
+    color : lightgrey;
+}
+
+.panel {
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 19px;
+}
