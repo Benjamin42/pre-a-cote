@@ -14,8 +14,8 @@
           href="<?php bloginfo('pingback_url'); ?>"/><?php wp_head(); ?>   <?php wp_get_archives('type=monthly&format=link'); ?> <?php //comments_popup_script(); <?php wp_head(); ?>
 
 
-    <link href="<?php echo get_template_directory_uri(); ?>/css/commons.css" rel="stylesheet">
     <link href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo get_template_directory_uri(); ?>/css/commons.css" rel="stylesheet">
 
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.min.js"></script>
@@ -30,11 +30,12 @@
         <div class="row">
             <div>
                 <center>
-                    <img width="200px" src="<?php echo get_template_directory_uri(); ?>/img/logo.png"/>
-
-                    <h3 class="beauty">Votre magasin de producteurs&nbsp;<img width="30px"
+                    <img style="margin-bottom: 10px; margin-top: -20px" width="150px" src="<?php echo get_template_directory_uri(); ?>/img/logo-modif.png"/>
+                    <!--
+                    <h3 class="beauty" style="margin-top: 20px;">Votre magasin de producteurs&nbsp;<img width="30px"
                                                                               src="<?php echo get_template_directory_uri(); ?>/img/coccinelle.png"/>
                     </h3>
+                    -->
                 </center>
             </div>
 
@@ -63,7 +64,7 @@
                     <ul id="%1$s" class="%2$s">%3$s</ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="mailto:info@lepredacote.fr"><i class="glyphicon glyphicon-envelope" >&nbsp;</i></a></li>
-                        <li><a href="https://www.facebook.com/lepredacote/" target="_blank"><img src="../wp-content/themes/paysan/img/home/facebook.png"></a></li>
+                        <li><a href="https://www.facebook.com/lepredacote/" target="_blank"><img class="icon-facebook" style="width: 30px;"></a></li>
                     </ul>'
             );
             wp_nav_menu($defaults);
@@ -75,4 +76,28 @@
         $(document).ready(function() {
             $(".current-menu-item").addClass("active");
         });
+
+        function openModal(att) {
+            $("#id-modal-img").attr("src", "");
+            $("#id-modal-img").attr("class", att);
+            $('#myModal').modal();
+        }
+
+        function openModalImg(elem) {
+            $("#id-modal-img").attr("class", "");
+            $("#id-modal-img").attr("src", elem.attr("src"));
+            $('#myModal').modal();
+        }
     </script>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <center>
+                        <img id="id-modal-img" style="width:600px;">
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>

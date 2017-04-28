@@ -9,35 +9,87 @@
 <div class="row" xmlns="http://www.w3.org/1999/html">
     <div class="<?php echo $colL; ?>">
 
-        <div class="panel">
+
             <?php if (have_posts()) : ?>
 
                 <?php while (have_posts()) : the_post(); ?>
                     <div class="post" id="post-<?php the_ID(); ?>">
-                        <?php if (!is_page()) : ?>
-                            <h2 class="beauty-green"><?php the_title(); ?></h2>
+                        <?php if (!is_front_page()) : ?>
+                            <h2 class="title-color"><?php the_title(); ?></h2>
                         <?php endif; ?>
 
-                        <div class="post_content"> <?php the_content("read more", true); ?> </div>
+                        <?php if ( is_page() && $post->post_parent > 0 && get_post( $post->post_parent )->post_name == "producteurs") : ?>
+                            <!-- Partie gauche : le contenu -->
+                            <div class="col-md-8">
+                                <div class="panel">
+                                    <?php the_content("read more", true); ?>
+                                </div>
+                            </div>
 
-                        <p class="postmetadata">
-                            Dernière mise à jour le <?php the_time('j F Y') ?> par <?php the_author() ?>
-                            <?php edit_post_link('Editer', ' &#124; ', ''); ?>
-                        </p>
+                            <!-- Partie droite : la carte et les coordonnées -->
+                            <div class="col-md-4">
+                                <div class="panel">
+                                    <h3 class="title-color">Infos pratiques</h3>
+
+                                    <h4><i class="glyphicon glyphicon-pencil">&nbsp;</i>Plus d'infos</h4>
+                                    <?php if (get_post_meta($post->ID, 'email', true) != "") : ?>
+                                        <p>Par mail : <a href="mailto:<?php echo get_post_meta(184, 'email', true); ?>" ><?php echo get_post_meta($post->ID, 'email', true); ?></a></p>
+                                    <?php endif; ?>
+                                    <?php if (get_post_meta($post->ID, 'telephone', true) != "") : ?>
+                                        <p>Par téléphone : <?php echo get_post_meta(184, 'telephone', true); ?></p>
+                                    <?php endif; ?>
+                                    <?php if (get_post_meta($post->ID, 'website', true) != "") : ?>
+                                        <p>Site web : <a target="_blank" href="<?php echo get_post_meta(184, 'website', true); ?>"><?php echo get_post_meta($post->ID, 'website', true); ?></a></p>
+                                    <?php endif; ?>
+
+                                    <h4><i class="glyphicon glyphicon-home">&nbsp;</i>Adresse</h4>
+                                    <?php $fullAddress = get_post_meta($post->ID, 'adresse_rue', true) . " " . get_post_meta($post->ID, 'adresse_codepostal', true) . " " . get_post_meta($post->ID, 'adresse_ville', true); ?>
+
+                                    <p><?php echo $fullAddress; ?></p>
+
+                                    <div id="map-canvas" style="height: 300px; width: 300px;" class="map"></div>
+                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIt0UOzmMBSaklD-XUtSqATQKaRp4HF5E&#038;callback=MapApiLoaded">
+                                    </script>
+
+                                    <script type="text/javascript">
+                                        function MapApiLoaded() {
+                                            createMap("<?php echo $fullAddress; ?>", 17).then(function (map) {
+                                                google.maps.event.addListenerOnce(map, 'idle', function () {
+                                                    var adresse = "<?php echo $fullAddress; ?>";
+                                                    var title = "Le magasin";
+                                                    var text = "";
+                                                    addMarker(map, adresse, title, text);
+                                                });
+                                            });
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+
+                        <?php else : ?>
+                            <!-- else : le contenu en 1 seules partie -->
+                            <div class="panel">
+                                <?php the_content("read more", true); ?>
+                            </div>
+                        <?php endif; ?>
 
                     </div>
                 <?php endwhile; ?>
 
             <?php endif; ?>
-        </div>
+
     </div>
-    
+
     <?php if (is_front_page()) {
         get_sidebar();
     } ?>
 
 
 </div>
+
+
+<?php get_footer(); ?> <!-- ouvrir header,php --> </body> </html>
+
 
 </div>
 

@@ -1,6 +1,8 @@
 body {
-    background-image: url('../img/background.jpg');
+    /*background-image: url('../img/fonds/photo-epis.jpeg');*/
+    background-image: url("../img/fonds/cartoon-31.jpg");
     background-attachment: fixed;
+    background-size: cover;
     z-index: 0;
 }
 
@@ -8,17 +10,26 @@ html {
     margin-top: 0px;
 }
 
+.panel {
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 19px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0px;
 }
 
-.beauty {
-    font-family: 'Pacifico', cursive;
+.title-color {
+    /* font-family: 'Pacifico', cursive; */
+    color : #ff9007;
 }
 
-.beauty-green {
-    font-family: 'Pacifico', cursive;
-    color : limegreen;
+.map {
+    border: 1px;
+    border-style: dashed;
 }
 
 .map-global {
@@ -32,12 +43,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .postmetadata {
-    color : lightgrey;
+    color : whitesmoke;
 }
 
-.panel {
-    background-color: white;
-    box-sizing: border-box;
-    border-radius: 4px;
-    padding: 19px;
-}
+.img-genese { content:url("../img/photos/genese.jpg"); }
+.img-legume { content:url("../img/photos/legumes.jpg");  }
+.img-boucherie { content:url("../img/photos/boucherie.jpg");  }
+
+.img-producteur1 { content:url("../img/photos/producteur-poterie.jpg");  }
+.img-producteur2 { content:url("../img/photos/producteur-apiculteur.jpg");  }
+.img-producteur3 { content:url("../img/photos/producteur-serre.png");  }
+.img-producteur4 { content:url("../img/photos/producteur-oie.png");  }
+
+.icon-magasin { content:url("../img/icon/magasin.png"); }
+.icon-producteurs { content:url("../img/icon/producteurs.png"); }
+.icon-produits { content:url("../img/icon/produits.png"); }
+.icon-facebook { content:url("../img/icon/facebook.png"); }
+
+.icon-cochon { content:url("../img/icon/cochon.png"); }
+.icon-vache { content:url("../img/icon/vache.png"); }
+.icon-volaille { content:url("../img/icon/volaille.png"); }
+.icon-legume { content:url("../img/icon/legume.png"); }
+.icon-boulangerie { content:url("../img/icon/boulangerie.png"); }
+.icon-cafe { content:url("../img/icon/cafe.png"); }
+.icon-epice { content:url("../img/icon/epice.png"); }
+.icon-fromage { content:url("../img/icon/fromage.png"); }
+.icon-confiture { content:url("../img/icon/confiture.png"); }
+.icon-vin { content:url("../img/icon/vin.png"); }
+.icon-poisson { content:url("../img/icon/poisson.png"); }
+.icon-conserve { content:url("../img/icon/conserve.png"); }
+.icon-divers { content:url("../img/icon/divers.png"); }
+.icon-mouton { content:url("../img/icon/mouton.png"); }
