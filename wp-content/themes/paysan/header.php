@@ -63,8 +63,8 @@
                 'items_wrap'     => '
                     <ul id="%1$s" class="%2$s">%3$s</ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="mailto:info@lepredacote.fr"><i class="glyphicon glyphicon-envelope" >&nbsp;</i></a></li>
-                        <li><a href="https://www.facebook.com/lepredacote/" target="_blank"><img class="icon-facebook" style="width: 30px;"></a></li>
+                        <li><a href="?page_id=515"><i class="glyphicon glyphicon-envelope" >&nbsp;</i></a></li>
+                        <li><a href="https://www.facebook.com/lepredacote/" target="_blank"><img class="icon-facebook"></a></li>
                     </ul>'
             );
             wp_nav_menu($defaults);

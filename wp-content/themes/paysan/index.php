@@ -1,4 +1,10 @@
+<?php
+    require_once 'functions.php';
+?>
+
 <?php get_header(); ?> <!-- ouvrir header,php --> </body> </html>
+
+
 
 <?php if (is_front_page()) {
     $colL = "col-md-8";
@@ -15,10 +21,15 @@
                 <?php while (have_posts()) : the_post(); ?>
                     <div class="post" id="post-<?php the_ID(); ?>">
                         <?php if (!is_front_page()) : ?>
-                            <h2 class="title-color"><?php the_title(); ?></h2>
+                            <h2 class="title-color">
+                                <?php if ( is_page() && is_parent($post,  "produits")) :
+                                    echo get_post_categories($post, "") . " ";
+                                endif; ?>
+                                <?php the_title(); ?>
+                            </h2>
                         <?php endif; ?>
 
-                        <?php if ( is_page() && $post->post_parent > 0 && get_post( $post->post_parent )->post_name == "producteurs") : ?>
+                        <?php if ( is_page() && is_parent($post,  "producteurs")) : ?>
                             <!-- Partie gauche : le contenu -->
                             <div class="col-md-8">
                                 <div class="panel">
@@ -29,6 +40,9 @@
                             <!-- Partie droite : la carte et les coordonnées -->
                             <div class="col-md-4">
                                 <div class="panel">
+
+                                    <?php echo get_post_categories($post) . " <b>Produits</b> : " . get_post_produits($post, true) . "</br>"; ?>
+
                                     <h3 class="title-color">Infos pratiques</h3>
 
                                     <h4><i class="glyphicon glyphicon-pencil">&nbsp;</i>Plus d'infos</h4>
@@ -53,7 +67,7 @@
 
                                     <script type="text/javascript">
                                         function MapApiLoaded() {
-                                            createMap("<?php echo $fullAddress; ?>", 17).then(function (map) {
+                                            createMap("<?php echo $fullAddress; ?>", 14).then(function (map) {
                                                 google.maps.event.addListenerOnce(map, 'idle', function () {
                                                     var adresse = "<?php echo $fullAddress; ?>";
                                                     var title = "Le magasin";

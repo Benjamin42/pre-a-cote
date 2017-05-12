@@ -16,12 +16,13 @@ function createMap(adresse, zoom){
     return deferred.promise();
 }
 
-/*
- function addMarker(lat, long, title, text) {
- callback(lat, long, title, text);
- }*/
-
 function addMarker(map, adresse, title, text) {
+    addMarker(map, adresse, title, text, null);
+}
+
+var lastInfoWindow = null;
+
+function addMarker(map, adresse, title, text, icon) {
     $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+adresse+'&sensor=false', null, function (data) {
         var p = data.results[0].geometry.location
         var latlng = new google.maps.LatLng(p.lat, p.lng);
@@ -29,7 +30,28 @@ function addMarker(map, adresse, title, text) {
         var aMarker= new google.maps.Marker({
             position: latlng,
             map: map,
-            title: title
+            title: title,
+            icon : icon
         });
+
+        var infowindow = new google.maps.InfoWindow({
+            content: '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h4 id="firstHeading" class="firstHeading">' + title + '</h4>'+
+            '<div id="bodyContent">'+
+            '<p>' + text + '</p>'+
+            '</div>'+
+            '</div>'
+        });
+
+        aMarker.addListener('click', function() {
+            if (lastInfoWindow != null) {
+                lastInfoWindow.close();
+            }
+            infowindow.open(map, aMarker);
+            lastInfoWindow = infowindow;
+        });
+
     });
 }
