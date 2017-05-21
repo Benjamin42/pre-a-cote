@@ -17,11 +17,12 @@
     </div>
 
     <div class="panel">
-        <h3 class="title-color">La presse parle de nous</h3>
+        <?php
+            $page = get_post(224);
+        ?>
 
-        <ul style="padding: 10px; list-style-type: none;">
-            <li>La montagne : <a target="_blank" href="http://www.lamontagne.fr/brive-la-gaillarde/ruralite/agriculture/2016/09/09/une-trentaine-de-producteurs-se-sont-associes-pour-creer-un-magasin-a-louest-de-brive_12063861.html">lire l'article <span class="glyphicon glyphicon-new-window"></span></a></li>
-            <li>L'echo.info : <a target="_blank" href="http://www.l-echo.info/article/brive-gaillarde/2016-05-17/produits-qualite-en-vente-directe-41962.html" >lire l'article <span class="glyphicon glyphicon-new-window"></span></a></li>
-        </ul>
+        <h3 class="title-color"><?php echo $page->post_title; ?></h3>
+
+        <?php echo $page->post_content; ?>
     </div>
 </div>
