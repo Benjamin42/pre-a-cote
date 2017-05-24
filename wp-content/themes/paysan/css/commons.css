@@ -1,5 +1,4 @@
 body {
-    /*background-image: url('../img/fonds/photo-epis.jpeg');*/
     background-image: url("../img/fonds/cartoon-31.jpg");
     background-attachment: fixed;
     background-size: cover;
@@ -23,7 +22,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .title-color {
-    /* font-family: 'Pacifico', cursive; */
     color : #ff9007;
 }
 
