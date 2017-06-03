@@ -1,5 +1,8 @@
 <?php
 
+//remove_filter( 'the_content', 'wpautop' );
+//remove_filter( 'the_excerpt', 'wpautop' );
+
 add_action( 'widgets_init', 'my_register_sidebars' );
 function my_register_sidebars() {
     /* Register the 'primary' sidebar. */
@@ -18,7 +21,7 @@ function get_post_categories($post, $size="-30") {
     $split = explode(",", $cat);
     $icons = "";
     for ($i = 0; $i < sizeof($split); $i++) {
-        $icons .= "<img class=\"icon-" . $split[$i] . $size . "\" > ";
+        $icons .= "<div class=\"icon" . $size . " icon-" . $split[$i] . "\" ></div>";
     }
     return $icons;
 }
